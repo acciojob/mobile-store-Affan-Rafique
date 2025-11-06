@@ -18,7 +18,8 @@
     "react-dom": "^16.13.1",
     "style-loader": "^1.2.1",
     "webpack-cli": "^3.3.12",
-    "cypress": "^9.5.0"
+    "cypress": "^9.5.0",
+    "react-router-dom": "^6.22.3"     <-- ✅ ADD THIS LINE
   },
   "jest": {
     "moduleNameMapper": {
@@ -52,3 +53,4 @@
     "xml-js": "^1.6.11"
   }
 }
+
