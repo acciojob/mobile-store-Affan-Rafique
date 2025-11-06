@@ -1,13 +1,32 @@
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ProductList from "./ProductList";
+import ProductDetails from "./ProductDetails";
+import AdminPanel from "./AdminPanel";
+import { initialProducts } from "./data";
 
-import React from "react";
-import './../styles/App.css';
+export default function App() {
+  const [products, setProducts] = useState(initialProducts);
 
-const App = () => {
   return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
+    <Router>
+      <nav style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+        {/* Cypress uses :nth-child(1) > a and :nth-child(2) > a */}
+        <Link to="/">Home</Link>
+        <Link to="/admin">Admin Panel</Link>
+      </nav>
 
-export default App
+      <Routes>
+        <Route path="/" element={<ProductList products={products} />} />
+        <Route
+          path="/products/:id"
+          element={<ProductDetails products={products} setProducts={setProducts} />}
+        />
+        <Route
+          path="/admin"
+          element={<AdminPanel products={products} setProducts={setProducts} />}
+        />
+      </Routes>
+    </Router>
+  );
+}
